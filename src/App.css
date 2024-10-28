@@ -1,4 +1,6 @@
 @import './assets/font/font.css';
+@tailwind base;
+@tailwind utilities;
 
 #root {
   max-width: 1280px;

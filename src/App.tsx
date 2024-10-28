@@ -1,12 +1,14 @@
 import './App.css'
 
+
 function App() {
 
   return (
-    <div>
-      App
-      سلام دنیا
-    </div>
+    <>
+      <div>
+        App
+      </div>
+    </>
   )
 }
 
