@@ -15,7 +15,7 @@ export type UserData = {
 
 export type UserState = {
     loading: boolean,
-    error: Error|null,
+    error: Error|null|unknown,
     userData: UserData | null,
     userToken: null | {
         accessToken: string,
@@ -45,11 +45,13 @@ export const counterSlice = createSlice({
         })
         .addCase(registerUser.fulfilled, (state, action) => {
             state.loading = false
+            state.success = true
             state.userData = <UserData>action.payload
         })
-        .addCase(registerUser.rejected, (state) => {
-            state.loading = true
-            state.error = null
+        .addCase(registerUser.rejected, (state, action) => {
+            state.loading = false
+            state.error = action.payload
+            state.success = false
         })
   }
 })
