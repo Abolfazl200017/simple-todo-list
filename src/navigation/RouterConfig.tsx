@@ -13,6 +13,7 @@ export const RouterConfig = () => {
   const dispatch = useAppDispatch();
 
   React.useEffect(() => {
+    console.log('is submitted', isSubmitted)
     if (!isSubmitted.current) {
         isSubmitted.current = true
         dispatch(registerUser({ password: 'emilyspasss', username: 'emilys' }));

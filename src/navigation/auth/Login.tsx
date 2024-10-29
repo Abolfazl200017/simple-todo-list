@@ -4,7 +4,7 @@ import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { useUserState, useAppDispatch } from '../../redux/hooks';
 import { registerUser } from '../../redux/slices/userSlice';
-import { redirect } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { UnknownAction, Dispatch } from 'redux';
 import { ThunkDispatch } from 'redux-thunk';
 import { UserState } from 'redux/slices/userSlice';
@@ -48,14 +48,15 @@ const onSubmit = (
 function Login() {
   const { success, loading } = useUserState();
   const dispatch = useAppDispatch();
+  const navigate = useNavigate()
   
   setInterval(() => {
     console.log(loading, 'pff');
   }, 3000);
 
   React.useEffect(() => {
-    if (success) redirect('/');
-  }, [success]);
+    if (success) navigate('/');
+  }, [navigate, success]);
 
   return (
     <div className="w-full min-h-screen flex justify-center items-center p-5">
