@@ -8,6 +8,7 @@ export default {
         'darkCardBG': '#11171d',
         'primary': "#040f3d",
         'secondary': '#757575',
+        'text': '#90caf9',
       }
     },
   },
