@@ -2,8 +2,15 @@ import { AccountCircle } from '@mui/icons-material';
 import { Card, TextField, Button } from '@mui/material';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
+import { useUserState, useAppDispatch } from '../../redux/hooks';
+import { registerUser } from '../../redux/slices/userSlice';
+import { redirect } from 'react-router-dom';
+import { UnknownAction, Dispatch } from 'redux';
+import { ThunkDispatch } from 'redux-thunk';
+import { UserState } from 'redux/slices/userSlice';
+import * as React from 'react';
 
-type LoginForm = {
+export type LoginForm = {
   username: string;
   password: string;
 };
@@ -18,10 +25,6 @@ const initalValue = {
   [formNames.PASSWORD]: '',
 };
 
-const onSubmit = (values: LoginForm) => {
-  console.log('valuesss', values);
-};
-
 const LoginSchema = Yup.object().shape({
   [formNames.USERNAME]: Yup.string()
     .min(2, 'Username is too short!')
@@ -33,7 +36,27 @@ const LoginSchema = Yup.object().shape({
     .required('Please enter password'),
 });
 
+const onSubmit = (
+  values: LoginForm,
+  loading: boolean,
+  dispatch: ThunkDispatch<{ user: UserState }, undefined, UnknownAction> & Dispatch<UnknownAction>,
+) => {
+  if (loading) return;
+  else dispatch(registerUser({ ...values }));
+};
+
 function Login() {
+  const { success, loading } = useUserState();
+  const dispatch = useAppDispatch();
+  
+  setInterval(() => {
+    console.log(loading, 'pff');
+  }, 3000);
+
+  React.useEffect(() => {
+    if (success) redirect('/');
+  }, [success]);
+
   return (
     <div className="w-full min-h-screen flex justify-center items-center p-5">
       <Card
@@ -45,7 +68,11 @@ function Login() {
         <div className="text-secondary">
           <AccountCircle sx={{ width: 100, height: 100 }} />
         </div>
-        <Formik initialValues={initalValue} validationSchema={LoginSchema} onSubmit={onSubmit}>
+        <Formik
+          initialValues={initalValue}
+          validationSchema={LoginSchema}
+          onSubmit={(values: LoginForm) => onSubmit(values, loading, dispatch)}
+        >
           {({ values, errors, touched, handleChange, handleBlur, handleSubmit }) => (
             <form onSubmit={handleSubmit}>
               <TextField
@@ -73,7 +100,7 @@ function Login() {
               />
 
               <input className="w-0 h-0 overflow-hidden" type="submit" />
-              <Button variant="contained" sx={{ fontWeight: 'bold', marginTop: '2rem', minWidth: 100 }}>
+              <Button type="submit" variant="contained" sx={{ fontWeight: 'bold', marginTop: '2rem', minWidth: 100 }}>
                 ورود
               </Button>
             </form>

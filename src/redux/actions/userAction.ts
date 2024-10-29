@@ -1,3 +1,4 @@
+import { LoginForm } from '../../navigation/auth/Login';
 import { LOGIN } from '../../services/CONSTANT'
 import axios from '../../services/axiosInstance'
 import { createAsyncThunk } from '@reduxjs/toolkit'
@@ -6,7 +7,7 @@ import { UserData } from 'redux/slices/userSlice';
 
 export const registerUser = createAsyncThunk(
   'auth/register',
-  async ({ username, password }: { username: string; password: string }, { rejectWithValue }) => {
+  async ({ username, password }: LoginForm, { rejectWithValue }) => {
     try {
       const config = {
         headers: {

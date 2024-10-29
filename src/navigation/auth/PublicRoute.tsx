@@ -1,18 +1,19 @@
+import * as React from "react";
 import { UserState } from "../../redux/slices/userSlice";
 import { useUserState } from "../../redux/hooks";
 import FullPageLoadingSpinner from "../../components/FullPageLoadingSpinner";
 import { Navigate, Outlet } from "react-router-dom";
 
-function PrivateRoute() {
+function PublicRoute() {
     const { loading, userData }:UserState = useUserState()
 
     if (loading && !userData)
         return <FullPageLoadingSpinner />
     
-    if (!userData)
-        return <Navigate to="/login" replace />;
+    if (userData)
+        return <Navigate to="/" replace />;
         
     return <Outlet />
 }
 
-export default PrivateRoute;
+export default PublicRoute;
