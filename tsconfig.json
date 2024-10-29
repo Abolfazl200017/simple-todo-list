@@ -3,7 +3,10 @@
     "jsx": "react-jsx",
     "baseUrl": "src",
     "module": "esnext",
-    "target": "es6"
+    "target": "es6",
+    "moduleResolution": "node",
+    "esModuleInterop": true,  // Allows ES6-style imports
+    "allowSyntheticDefaultImports": true  // Necessary for compatibility with certain packages
   },
   "include": [
     "src"

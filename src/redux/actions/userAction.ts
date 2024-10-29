@@ -1,4 +1,4 @@
-import { LOGIN } from 'services/CONSTANT'
+import { LOGIN } from '../../services/CONSTANT'
 import axios from '../../services/axiosInstance'
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import { UserData } from 'redux/slices/userSlice';
