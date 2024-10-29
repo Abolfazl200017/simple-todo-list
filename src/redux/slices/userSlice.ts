@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { registerUser } from '../actions/userAction'
+import { setAccessTokenToLocalStorage, setRefreshTokenToLocalStorage } from '../../utils/localStorage'
 
 export type UserData = {
     id: number,
@@ -47,6 +48,8 @@ export const counterSlice = createSlice({
             state.loading = false
             state.success = true
             state.userData = <UserData>action.payload
+            setAccessTokenToLocalStorage(action.payload.accessToken)
+            setRefreshTokenToLocalStorage(action.payload.refreshToken)
         })
         .addCase(registerUser.rejected, (state, action) => {
             state.loading = false

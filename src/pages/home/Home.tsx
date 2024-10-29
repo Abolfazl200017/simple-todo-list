@@ -1,13 +1,16 @@
 import { Link as RouterLink } from 'react-router-dom'
+import { useUserState } from '../../redux/hooks'
 
 function Home() {
+    const { userData } = useUserState()
 
-    return <div>
+    return <>
         home works
         <RouterLink to="/login" >
             login
         </RouterLink>
-    </div>
+        {JSON.stringify(userData)}
+    </>
 }
 
 export default Home

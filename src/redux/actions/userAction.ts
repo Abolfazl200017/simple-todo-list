@@ -30,3 +30,5 @@ export const registerUser = createAsyncThunk(
     }
   }
 )
+
+// export const getCurrentAthentication = createAsyncThunk()
