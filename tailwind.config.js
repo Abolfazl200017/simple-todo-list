@@ -6,6 +6,8 @@ export default {
       colors: {
         'darkBG': '#0f1214',
         'darkCardBG': '#11171d',
+        'primary': "#040f3d",
+        'secondary': '#757575',
       }
     },
   },
