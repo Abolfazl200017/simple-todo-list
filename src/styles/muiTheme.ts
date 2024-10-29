@@ -6,12 +6,12 @@ import { createTheme } from '@mui/material/styles';
 // import { purple, green, orange, deepOrange } from "@mui/material/colors";
 
 // Global styles can be moved to a separate file for ease of maintenance.
-const global = {
-  textRight: {
-    textAlign: "right",
-  },
-  mygrey: "rgba(0, 0, 0, 0.5)",
-};
+// const global = {
+//   textRight: {
+//     textAlign: "right",
+//   },
+//   mygrey: "rgba(0, 0, 0, 0.5)",
+// };
 
 export const dark = () => createTheme({
   palette: {

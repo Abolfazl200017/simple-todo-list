@@ -1,12 +1,14 @@
 {
   "compilerOptions": {
-    "jsx": "react-jsx",
     "baseUrl": "src",
+    "jsx": "react-jsx",
     "module": "esnext",
     "target": "es6",
     "moduleResolution": "node",
-    "esModuleInterop": true,  // Allows ES6-style imports
-    "allowSyntheticDefaultImports": true  // Necessary for compatibility with certain packages
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "allowImportingTsExtensions": true,  // Allow importing .ts/.tsx files with extensions
+    "noEmit": true  // Enable noEmit
   },
   "include": [
     "src"
