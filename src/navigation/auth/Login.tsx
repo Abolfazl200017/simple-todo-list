@@ -3,11 +3,11 @@ import { Card, TextField, Button } from '@mui/material';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { useUserState, useAppDispatch } from '../../redux/hooks';
-import { registerUser } from '../../redux/slices/userSlice';
+import { registerUser } from '../../redux/user/userSlices';
 import { useNavigate } from 'react-router-dom';
 import { UnknownAction, Dispatch } from 'redux';
 import { ThunkDispatch } from 'redux-thunk';
-import { UserState } from 'redux/slices/userSlice';
+import { UserState } from 'redux/user/userSlices';
 import * as React from 'react';
 
 export type LoginForm = {
@@ -27,13 +27,13 @@ const initalValue = {
 
 const LoginSchema = Yup.object().shape({
   [formNames.USERNAME]: Yup.string()
-    .min(2, 'Username is too short!')
-    .max(50, 'Username is too long!')
-    .required('Please enter username'),
+    .min(2, 'بسیار کوتاه!')
+    .max(50, 'بسیار طولانی!')
+    .required('لطفا نام کاربری را وارد کنید'),
   [formNames.PASSWORD]: Yup.string()
-    .min(2, 'Password is too short!')
-    .max(50, 'Password is too long!')
-    .required('Please enter password'),
+    .min(2, 'بسیار کوتاه!')
+    .max(50, 'بسیار طولانی!')
+    .required('لطفا رمز عبور را وارد کنید'),
 });
 
 const onSubmit = (

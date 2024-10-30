@@ -1,6 +1,6 @@
-import { SYSTEM_ERROR } from 'config/CONSTANT';
+import { SYSTEM_ERROR } from '../config/CONSTANT';
 import axiosInstance from './axiosInstance'
-import { LOGIN } from "./CONSTANT";
+import { GET_CURRENT_ATHENTICATION, LOGIN } from "./CONSTANT";
 
 
 export const login = (username: string, password:string) => {
@@ -27,3 +27,24 @@ export const login = (username: string, password:string) => {
       }
     });
   };
+
+export const getCurrentAthentication = () => {
+  return new Promise((resolve, reject) => {
+    try {
+      axiosInstance
+      .get(
+        GET_CURRENT_ATHENTICATION,
+      )
+      .then((res) => {
+        resolve(res.data);
+      })
+      .catch((err) => {
+        console.log("getCurrentAthentication > axios err=", err);
+        reject("Error in getCurrentAthentication axios!");
+      });
+    } catch (error) {
+      console.error("in userServices > getCurrentAthentication, Err===", error);
+      reject(SYSTEM_ERROR);
+    }
+  });
+};
