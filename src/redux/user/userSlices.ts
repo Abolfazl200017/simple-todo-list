@@ -1,6 +1,6 @@
 import { ActionReducerMapBuilder, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { registerMe, registerUser } from './userThunks';
-import { setAccessTokenToLocalStorage, setRefreshTokenToLocalStorage } from '../../utils/localStorage';
+import { setAccessTokenToLocalStorage, setRefreshTokenToLocalStorage } from 'utils/localStorage';
 
 export type UserData = {
   id: number;
@@ -44,7 +44,6 @@ const handleFulfilled = (state: UserState, action: PayloadAction<UserData>) => {
   state.userData = action.payload; // assuming action.payload is already of type UserData
   if (action.payload.accessToken) setAccessTokenToLocalStorage(action.payload.accessToken);
   if (action.payload.refreshToken) setRefreshTokenToLocalStorage(action.payload.refreshToken);
-  console.log('state', state);
 };
 
 const handleRejected = (state: UserState, action: PayloadAction<string | undefined>) => {

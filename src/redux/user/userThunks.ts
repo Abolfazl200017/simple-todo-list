@@ -1,4 +1,4 @@
-import { LoginForm } from '../../navigation/auth/Login';
+import { LoginForm } from 'navigation/auth/Login';
 import { GET_CURRENT_ATHENTICATION, LOGIN } from '../../services/CONSTANT'
 import axios from '../../services/axiosInstance'
 import { createAsyncThunk } from '@reduxjs/toolkit'
@@ -44,7 +44,6 @@ export const registerMe = createAsyncThunk<UserData, void, { rejectValue: string
         GET_CURRENT_ATHENTICATION,
         config
       )
-      console.log('response of me', response  )
       return response.data
     } catch (error) {
     // return custom error message from backend if present

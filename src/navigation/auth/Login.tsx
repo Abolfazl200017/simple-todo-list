@@ -49,10 +49,6 @@ function Login() {
   const { success, loading } = useUserState();
   const dispatch = useAppDispatch();
   const navigate = useNavigate()
-  
-  setInterval(() => {
-    console.log(loading, 'pff');
-  }, 3000);
 
   React.useEffect(() => {
     if (success) navigate('/');

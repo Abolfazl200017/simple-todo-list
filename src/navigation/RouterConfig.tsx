@@ -1,13 +1,13 @@
 import * as React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Login from './auth/Login';
-import Home from '../pages/home/Home';
+import Home from 'pages/home/Home';
 import PrivateRoute from './auth/PrivateRoute';
 import { HOME, LOGIN } from './CONSTANT';
 import { useAppDispatch } from './../redux/hooks';
 import { resetUserState } from '../redux/user/userSlices';
 import PublicRoute from './auth/PublicRoute';
-import { getAccessTokenToLocalStorage } from '../utils/localStorage';
+import { getAccessTokenToLocalStorage } from 'utils/localStorage';
 import { registerMe } from '../redux/user/userThunks';
 
 export const RouterConfig = () => {

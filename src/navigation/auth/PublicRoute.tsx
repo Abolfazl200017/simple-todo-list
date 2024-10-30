@@ -1,7 +1,7 @@
 import * as React from "react";
 import { UserState } from "../../redux/user/userSlices";
 import { useUserState } from "../../redux/hooks";
-import FullPageLoadingSpinner from "../../components/FullPageLoadingSpinner";
+import FullPageLoadingSpinner from "components/FullPageLoadingSpinner";
 import { Navigate, Outlet, useLocation } from "react-router-dom";
 
 function PublicRoute() {

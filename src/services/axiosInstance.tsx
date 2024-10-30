@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { getAccessTokenToLocalStorage, getRefreshTokenToLocalStorage, removeAccessTokenFromLocalStorage, removeRefreshTokenFromLocalStorage, setAccessTokenToLocalStorage, setRefreshTokenToLocalStorage } from '../utils/localStorage';
+import { getAccessTokenToLocalStorage, getRefreshTokenToLocalStorage, removeAccessTokenFromLocalStorage, removeRefreshTokenFromLocalStorage, setAccessTokenToLocalStorage, setRefreshTokenToLocalStorage } from 'utils/localStorage';
 
 const axiosInstance = axios.create({
   baseURL: 'https://dummyjson.com/' //process.env.REACT_APP_API_BASE_URL
