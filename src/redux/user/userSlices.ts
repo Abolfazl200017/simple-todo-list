@@ -9,7 +9,7 @@ export type UserData = {
   firstName: string;
   lastName: string;
   gender?: 'male' | 'female';
-  img?: string;
+  image?: string;
   accessToken: string;
   refreshToken: string;
 };

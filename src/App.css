@@ -9,3 +9,7 @@
   text-align: center;
   font-family: 'Shabnam';
 }
+
+.flex-items-center {
+  @apply flex items-center justify-between
+}
