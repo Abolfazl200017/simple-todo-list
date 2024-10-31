@@ -1,13 +1,13 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import CssBaseline from '@mui/material/CssBaseline';
-import Header from './Header';
-import Sidebar from './Sidebar';
-import Main from './Main';
+import Header from '@components/Header';
+import Sidebar from '@components/Sidebar';
+import Main from '@components/Main';
 
 export const drawerWidth = 240;
 
-function Home() {
+function MainLayout() {
   const [open, setOpen] = React.useState(true);
 
   const handleDrawerOpen = () => {
@@ -28,4 +28,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default MainLayout;
