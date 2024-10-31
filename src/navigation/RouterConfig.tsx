@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Login from './auth/Login';
-import Home from 'pages/home/Home';
 import PrivateRoute from './auth/PrivateRoute';
 import { HOME, LOGIN } from './CONSTANT';
 import { useAppDispatch } from './../redux/hooks';
@@ -9,6 +8,7 @@ import { setStateForUnknownToken } from '../redux/user/userSlices';
 import PublicRoute from './auth/PublicRoute';
 import { getAccessTokenToLocalStorage } from 'utils/localStorage';
 import { registerMe } from '../redux/user/userThunks';
+import MainLayout from 'layouts/MainLayout';
 
 export const RouterConfig = () => {
   const isSubmitted = React.useRef<boolean>(false)
@@ -31,7 +31,9 @@ export const RouterConfig = () => {
         <Route path={LOGIN} element={<Login />} />
       </Route>
       <Route element={<PrivateRoute />}>
-        <Route path={HOME} element={<Home />} />
+        <Route path='/' element={<MainLayout />}>
+          <Route path={HOME} element={<div>hello home</div>}></Route>
+        </Route>
       </Route>
     </Routes>
   );

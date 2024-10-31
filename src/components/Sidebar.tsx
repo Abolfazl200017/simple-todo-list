@@ -11,7 +11,7 @@ import MailIcon from '@mui/icons-material/Mail';
 import Drawer from '@mui/material/Drawer';
 import List from '@mui/material/List';
 import { styled, useTheme } from '@mui/material/styles';
-import { DRAWER_WIDTH } from '@config/CONSTANT';
+import { DRAWER_WIDTH } from 'config/CONSTANT';
 
 
 export const DrawerHeader = styled('div')(({ theme }) => ({
@@ -32,7 +32,7 @@ function Sidebar({handleDrawerClose, open}) {
           width: DRAWER_WIDTH,
           flexShrink: 0,
           '& .MuiDrawer-paper': {
-            width: DRAWER_WIDTH,
+            width: `${DRAWER_WIDTH}px`,
             boxSizing: 'border-box',
           },
         }}

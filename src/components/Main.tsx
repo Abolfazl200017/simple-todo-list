@@ -1,4 +1,4 @@
-import { DRAWER_WIDTH } from '@config/CONSTANT';
+import { DRAWER_WIDTH } from 'config/CONSTANT';
 import { DrawerHeader } from './Sidebar';
 import { styled } from '@mui/material/styles';
 import { Outlet } from 'react-router-dom';
