@@ -1,5 +1,5 @@
 import { Button } from "@mui/material"
-import { serverErrorImg } from "assets/image"
+import { serverErrorImg } from "../../assets/image"
 import { useNavigate } from "react-router-dom"
 
 function ServerError() {
