@@ -1,5 +1,5 @@
 import { AccountCircle } from '@mui/icons-material';
-import { Card, TextField, Button } from '@mui/material';
+import { Card, TextField, Button, Alert } from '@mui/material';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { useUserState, useAppDispatch } from '../../redux/hooks';
@@ -56,8 +56,15 @@ function LinearIndeterminate({ loading }: { loading: boolean }) {
   );
 }
 
+function ShowError({error}) {
+   if(!error) return <></>;
+   return (
+    <Alert severity="error">{JSON.stringify(error)}</Alert>
+   )
+}
+
 function Login() {
-  const { success, loading } = useUserState();
+  const { success, loading, error } = useUserState();
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
@@ -71,13 +78,14 @@ function Login() {
         <Card
           sx={{
             minWidth: 275,
-            padding: '2rem',
             position: 'relative'
           }}
+          className='py-8 px-3 md:px-14 w-[90%] md:w-[500px]'
         >
           <LinearIndeterminate loading={loading} />
           <div className="text-secondary">
-            <AccountCircle sx={{ width: 100, height: 100 }} />
+            {/* <AccountCircle sx={{ width: 100, height: 100 }} /> */}
+            <img src="/images/logo.webp" className="w-24 h-24 rounded-full mx-auto" />
           </div>
           <Formik
             initialValues={initalValue}
@@ -111,7 +119,10 @@ function Login() {
                 />
 
                 <input className="w-0 h-0 overflow-hidden" type="submit" />
-                <Button type="submit" variant="contained" disabled={loading} sx={{ fontWeight: 'bold', marginTop: '2rem', minWidth: 100 }}>
+
+                <ShowError error={error} />
+
+                <Button type="submit" variant="contained" disabled={loading} sx={{ fontWeight: 'bold', marginTop: '1rem', minWidth: 100 }}>
                   ورود
                 </Button>
               </form>
