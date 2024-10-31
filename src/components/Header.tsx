@@ -67,7 +67,7 @@ function Header({ handleDrawerOpen, open }) {
           <button onClick={logout} className='font-semibold text-sm hover:opacity-75 transition-opacity'>
             logout
           </button>
-          <div className='mr-2 flex items-center'>
+          <div className='mr-2 flex items-center select-none'>
             <span>
                 {userData.firstName}
                 <span className='mx-1'></span>
