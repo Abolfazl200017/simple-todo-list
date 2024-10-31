@@ -2,13 +2,15 @@ import * as React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Login from './auth/Login';
 import PrivateRoute from './auth/PrivateRoute';
-import { HOME, LOGIN } from './CONSTANT';
+import { HOME, LOGIN, SERVER_ERROR } from './CONSTANT';
 import { useAppDispatch } from './../redux/hooks';
 import { setStateForUnknownToken } from '../redux/user/userSlices';
 import PublicRoute from './auth/PublicRoute';
 import { getAccessTokenToLocalStorage } from 'utils/localStorage';
 import { registerMe } from '../redux/user/userThunks';
 import MainLayout from 'layouts/MainLayout';
+import ServerError from 'pages/error/ServerError';
+import NotFound from 'pages/error/NotFound';
 
 export const RouterConfig = () => {
   const isSubmitted = React.useRef<boolean>(false)
@@ -35,6 +37,8 @@ export const RouterConfig = () => {
           <Route path={HOME} element={<div>hello home</div>}></Route>
         </Route>
       </Route>
+      <Route path={SERVER_ERROR} element={<ServerError />} />
+      <Route path='*' element={<NotFound />} />
     </Routes>
   );
 };

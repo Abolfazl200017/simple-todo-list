@@ -1,8 +1,10 @@
 import axios from 'axios';
 import { getAccessTokenToLocalStorage, getRefreshTokenToLocalStorage, removeAccessTokenFromLocalStorage, removeRefreshTokenFromLocalStorage, setAccessTokenToLocalStorage, setRefreshTokenToLocalStorage } from 'utils/localStorage';
+import { BASE_URL } from './CONSTANT';
+import { SERVER_ERROR } from 'navigation/CONSTANT';
 
 const axiosInstance = axios.create({
-  baseURL: 'https://dummyjson.com/' //process.env.REACT_APP_API_BASE_URL
+  baseURL: BASE_URL //process.env.REACT_APP_API_BASE_URL
 });
 
 axiosInstance.interceptors.request.use(request => {
@@ -43,6 +45,12 @@ axiosInstance.interceptors.response.use(
         return Promise.reject(refreshError);
       }
     }
+
+    if (error.response?.status === 500 || error.response?.status === 0) {
+      console.error('A server error occurred. Redirecting to error page...');
+      window.location.href = SERVER_ERROR; // Redirect to a dedicated 500 error page
+    }
+
     return Promise.reject(error); // For all other errors, return the error as is.
   }
 );
