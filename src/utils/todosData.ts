@@ -10,26 +10,20 @@ export const InitialUserTodos: UserTodos = {
   todos: [],
 };
 
-
 function setUserTodosFromStorage(id: number) {
-  const todos: UsersTodos | null = getTodosFromLocalStorage();
+  const todos = getTodosFromLocalStorage();
   userId = id;
-  usersTodos = todos ? todos : <UsersTodos>{
-    [id]: { ...InitialUserTodos }
-  };
-  if(!userTodos[id])
-    userTodos = { ...userTodos, [id]: { ...InitialUserTodos}}
-  userTodos = todos[id]
+  usersTodos = todos || { [id]: { ...InitialUserTodos } };
+  userTodos = usersTodos[id] || { ...InitialUserTodos };
+  if(JSON.stringify(usersTodos) !== JSON.stringify(todos))
+    setTodosOnLocalStorage(usersTodos)
 }
 
 export function updateUserTodos(updatedUserTodos: UserTodos): void {
-  userTodos = updatedUserTodos;
-  usersTodos = {
-    ...usersTodos,
-    [userId]: { ...updatedUserTodos },
-  };
-
-  setTodosOnLocalStorage(usersTodos);
+  if (userId !== null) {
+    usersTodos = { ...usersTodos, [userId]: updatedUserTodos };
+    setTodosOnLocalStorage(usersTodos);
+  }
 }
 
 export function getUserTodos(id: number): UserTodos {

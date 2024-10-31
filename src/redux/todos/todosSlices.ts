@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { getUserTodos } from 'utils/todosData';
 
 export type Todo = {
@@ -20,33 +20,31 @@ export type UserTodos = {
 };
 
 export type TodosState = {
-    loading: boolean;
-    Todos: UserTodos| null;
-    error: Error | null | unknown;
-    sucsess: boolean;
-}
+  loading: boolean;
+  todos: UserTodos | null;
+  error: Error | null | unknown;
+  success: boolean;
+};
 
 const initialState: TodosState = {
-    loading: true,
-    error: null,
-    Todos: null,
-    sucsess: false,
-}
+  loading: true,
+  error: null,
+  todos: null,
+  success: false,
+};
 
-export const userSlice = createSlice({
-  name: 'counter',
+export const todosSlice = createSlice({
+  name: 'todosSlice',
   initialState,
   reducers: {
-    initialState: (state, action) => {
-        const userTodos: UserTodos = getUserTodos(action.payload.id)
-        state.Todos = userTodos;
-        state.sucsess = true
-        state.loading = false
-    }
+    initState: (state, action: PayloadAction<{ id: number }>) => {
+      const userTodos = getUserTodos(action.payload.id);
+      state.todos = { ...userTodos };
+      state.success = true;
+      state.loading = false;
+    },
   },
 });
 
-// Action creators are generated for each case reducer function
-
-
-export default userSlice.reducer;
+export const { initState } = todosSlice.actions;
+export default todosSlice.reducer;

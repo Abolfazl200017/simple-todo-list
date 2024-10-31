@@ -57,7 +57,7 @@ const handleRejected = (state: UserState, action: PayloadAction<string | undefin
 };
 
 export const userSlice = createSlice({
-  name: 'counter',
+  name: 'userSlice',
   initialState,
   reducers: {
     setStateForUnknownToken: (state) => {
