@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { getUserTodos } from '@utils/todosData';
+import { getUserTodos } from 'utils/todosData';
 
 export type Todo = {
   id: string;

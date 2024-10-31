@@ -2,7 +2,8 @@ import CircularProgress from '@mui/material/CircularProgress';
 
 function FullPageLoadingSpinner() {
     
-    return <div className="w-screen h-screen flex items-center justify-center bg-darkBG">
+    return <div className="w-screen h-screen flex flex-col items-center justify-center bg-darkBG">
+        <img className='grayscale w-20 h-20 rounded mb-5' src="/images/logo.webp" />
         <div>
             <svg width={0} height={0}>
             <defs>
