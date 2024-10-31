@@ -3,13 +3,10 @@ import { styled, useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
 import CssBaseline from '@mui/material/CssBaseline';
-import MuiAppBar, { AppBarProps as MuiAppBarProps } from '@mui/material/AppBar';
-import Toolbar from '@mui/material/Toolbar';
 import List from '@mui/material/List';
 import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
-import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import ListItem from '@mui/material/ListItem';
@@ -18,10 +15,9 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
-import { WEBSITE_TITLE } from 'config/CONSTANT';
-import { useUserState } from '../../redux/hooks';
+import Header from './Header';
 
-const drawerWidth = 240;
+export const drawerWidth = 240;
 
 const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })<{
   open?: boolean;
@@ -47,32 +43,6 @@ const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })<{
   ],
 }));
 
-interface AppBarProps extends MuiAppBarProps {
-  open?: boolean;
-}
-
-const AppBar = styled(MuiAppBar, {
-  shouldForwardProp: (prop) => prop !== 'open',
-})<AppBarProps>(({ theme }) => ({
-  transition: theme.transitions.create(['margin', 'width'], {
-    easing: theme.transitions.easing.sharp,
-    duration: theme.transitions.duration.leavingScreen,
-  }),
-  variants: [
-    {
-      props: ({ open }) => open,
-      style: {
-        width: `calc(100% - ${drawerWidth}px)`,
-        marginLeft: `${drawerWidth}px`,
-        transition: theme.transitions.create(['margin', 'width'], {
-          easing: theme.transitions.easing.easeOut,
-          duration: theme.transitions.duration.enteringScreen,
-        }),
-      },
-    },
-  ],
-}));
-
 const DrawerHeader = styled('div')(({ theme }) => ({
   display: 'flex',
   alignItems: 'center',
@@ -85,7 +55,6 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 function Home() {
   const theme = useTheme();
   const [open, setOpen] = React.useState(true);
-  const { userData } = useUserState();
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -98,38 +67,7 @@ function Home() {
   return (
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
-      <AppBar position="fixed" open={open}>
-        <Toolbar className="flex-items-center">
-          <div className="flex-items-center">
-            <IconButton
-              color="inherit"
-              aria-label="open drawer"
-              onClick={handleDrawerOpen}
-              edge="start"
-              sx={[
-                {
-                  mr: 2,
-                },
-                open && { display: 'none' },
-              ]}
-            >
-              <MenuIcon />
-            </IconButton>
-            <div className="h-16 py-2 ml-3">
-              <img src="/images/logo.webp" className="h-full aspect-square" />
-            </div>
-            <Typography variant="h6" noWrap component="div" sx={{ fontWeight: 'bold' }}>
-              {WEBSITE_TITLE}
-            </Typography>
-          </div>
-          <div className="flex-items-center">
-            <span>logout</span>
-            <div className="h-16 py-3 mr-2">
-              <img className="h-full aspect-square rounded-full overflow-hidden" src={userData?.image} />
-            </div>
-          </div>
-        </Toolbar>
-      </AppBar>
+      <Header handleDrawerOpen={handleDrawerOpen} open={open} />
       <Drawer
         sx={{
           width: drawerWidth,
