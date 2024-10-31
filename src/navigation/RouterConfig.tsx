@@ -5,7 +5,7 @@ import Home from 'pages/home/Home';
 import PrivateRoute from './auth/PrivateRoute';
 import { HOME, LOGIN } from './CONSTANT';
 import { useAppDispatch } from './../redux/hooks';
-import { resetUserState } from '../redux/user/userSlices';
+import { setStateForUnknownToken } from '../redux/user/userSlices';
 import PublicRoute from './auth/PublicRoute';
 import { getAccessTokenToLocalStorage } from 'utils/localStorage';
 import { registerMe } from '../redux/user/userThunks';
@@ -21,7 +21,7 @@ export const RouterConfig = () => {
         if(token)
           dispatch(registerMe());
         else
-          dispatch(resetUserState())
+          dispatch(setStateForUnknownToken())
     }
   }, [dispatch]);
 

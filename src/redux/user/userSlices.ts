@@ -1,6 +1,6 @@
 import { ActionReducerMapBuilder, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { registerMe, registerUser } from './userThunks';
-import { setAccessTokenToLocalStorage, setRefreshTokenToLocalStorage } from 'utils/localStorage';
+import { removeAccessTokenFromLocalStorage, removeRefreshTokenFromLocalStorage, setAccessTokenToLocalStorage, setRefreshTokenToLocalStorage } from 'utils/localStorage';
 
 export type UserData = {
   id: number;
@@ -60,12 +60,19 @@ export const userSlice = createSlice({
   name: 'counter',
   initialState,
   reducers: {
-    resetUserState: (state) => {
+    setStateForUnknownToken: (state) => {
       state.error = null;
       state.loading = false;
       state.userData = null;
       state.userToken = null;
       state.initialized = true;
+    },
+    resetUserState: (state) => {
+      removeAccessTokenFromLocalStorage()
+      removeRefreshTokenFromLocalStorage()
+      state.userData = null;
+      state.userToken = null;
+      state.success = false
     },
   },
   extraReducers: (builder: ActionReducerMapBuilder<UserState>) => {
@@ -84,7 +91,7 @@ export const userSlice = createSlice({
 });
 
 // Action creators are generated for each case reducer function
-export const { resetUserState } = userSlice.actions;
+export const { resetUserState, setStateForUnknownToken } = userSlice.actions;
 export { registerUser };
 
 export default userSlice.reducer;
