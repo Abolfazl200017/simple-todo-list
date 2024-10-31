@@ -4,9 +4,9 @@ import FullPageLoadingSpinner from "components/FullPageLoadingSpinner";
 import { Navigate, Outlet } from "react-router-dom";
 
 function PrivateRoute() {
-    const { loading, userData }:UserState = useUserState()
+    const { userData, initialized }:UserState = useUserState()
 
-    if (loading && !userData)
+    if (!initialized)
         return <FullPageLoadingSpinner />
     
     if (!userData)

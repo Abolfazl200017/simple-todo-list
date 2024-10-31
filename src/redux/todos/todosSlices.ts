@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { getUserTodos } from '@utils/todosData';
 
 export type Todo = {
   id: string;
@@ -9,7 +10,7 @@ export type Todo = {
 };
 
 export type Category = {
-  id: string;
+  name: string;
   color: string | null;
 };
 
@@ -20,7 +21,7 @@ export type UserTodos = {
 
 export type TodosState = {
     loading: boolean;
-    Todos: UserTodos[];
+    Todos: UserTodos| null;
     error: Error | null | unknown;
     sucsess: boolean;
 }
@@ -28,7 +29,7 @@ export type TodosState = {
 const initialState: TodosState = {
     loading: true,
     error: null,
-    Todos: [],
+    Todos: null,
     sucsess: false,
 }
 
@@ -36,7 +37,12 @@ export const userSlice = createSlice({
   name: 'counter',
   initialState,
   reducers: {
-    
+    initialState: (state, action) => {
+        const userTodos: UserTodos = getUserTodos(action.payload.id)
+        state.Todos = userTodos;
+        state.sucsess = true
+        state.loading = false
+    }
   },
 });
 

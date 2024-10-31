@@ -23,6 +23,7 @@ export type UserState = {
     refreshToken: string;
   };
   success: boolean;
+  initialized: boolean;
 };
 
 const initialState: UserState = {
@@ -31,6 +32,7 @@ const initialState: UserState = {
   userData: null,
   userToken: null,
   success: false,
+  initialized: false,
 };
 
 const handlePending = (state: UserState) => {
@@ -42,6 +44,7 @@ const handleFulfilled = (state: UserState, action: PayloadAction<UserData>) => {
   state.loading = false;
   state.success = true;
   state.userData = action.payload; // assuming action.payload is already of type UserData
+  state.initialized = true;
   if (action.payload.accessToken) setAccessTokenToLocalStorage(action.payload.accessToken);
   if (action.payload.refreshToken) setRefreshTokenToLocalStorage(action.payload.refreshToken);
 };
@@ -50,6 +53,7 @@ const handleRejected = (state: UserState, action: PayloadAction<string | undefin
   state.loading = false;
   state.error = action.payload || 'Unknown error';
   state.success = false;
+  state.initialized = true;
 };
 
 export const userSlice = createSlice({
@@ -61,6 +65,7 @@ export const userSlice = createSlice({
       state.loading = false;
       state.userData = null;
       state.userToken = null;
+      state.initialized = true;
     },
   },
   extraReducers: (builder: ActionReducerMapBuilder<UserState>) => {

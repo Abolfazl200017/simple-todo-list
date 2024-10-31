@@ -5,10 +5,10 @@ import FullPageLoadingSpinner from "components/FullPageLoadingSpinner";
 import { Navigate, Outlet, useLocation } from "react-router-dom";
 
 function PublicRoute() {
-    const { loading, userData }:UserState = useUserState()
+    const { userData, initialized }:UserState = useUserState()
     const location = useLocation()
 
-    if (loading && !userData)
+    if (!initialized)
         return <FullPageLoadingSpinner />
     
     if (userData && location.pathname == '/login')
