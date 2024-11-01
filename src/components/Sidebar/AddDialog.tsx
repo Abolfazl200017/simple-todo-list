@@ -8,10 +8,11 @@ import DialogTitle from '@mui/material/DialogTitle';
 import TextField from '@mui/material/TextField';
 import { useAppDispatch, useTodoState } from '../../redux/hooks';
 import { addCategory } from '../../redux/todos/todosSlices';
+import useSnackbar from "components/Snackbar/useSnackbar";
 
 type Dispatch = (arg0: { payload: { name: string; }; type: "todosSlice/addCategory"; }) => void
 
-const handleSubmit = (event: React.FormEvent<HTMLFormElement>, dispatch: Dispatch, setIsSubmitted: (arg0: boolean) => void) => {
+const handleSubmit = (event: React.FormEvent<HTMLFormElement>, dispatch: Dispatch, setIsSubmitted: (value: boolean) => void) => {
   event.preventDefault();
   const formData = new FormData(event.currentTarget);
   const formJson = Object.fromEntries((formData).entries());
@@ -21,16 +22,31 @@ const handleSubmit = (event: React.FormEvent<HTMLFormElement>, dispatch: Dispatc
 }
 
 function AddDialog({ open, handleClose }) {
-  const { error, success } = useTodoState()
+  const { error, success, loading } = useTodoState()
   const [ isSubmitted, setIsSubmitted ] = React.useState(false)
   const dispatch = useAppDispatch()
+  const enqueueSnackbar = useSnackbar();
+
+  const showSuccessMessage = React.useCallback(() => {
+    enqueueSnackbar(`دسته‌بندی جدید با موفقیت ایجاد شد.`, { variant: 'success' });
+  }, [enqueueSnackbar]);
+
+  const showErrorMessage = React.useCallback((errorMessage: string) => {
+    enqueueSnackbar(errorMessage, { variant: 'error' });
+  }, [enqueueSnackbar]);
 
   React.useEffect(() => {
-    console.log('error', error)
-    console.log("success", success)
-    console.log("is submitted", isSubmitted)
+    if(!isSubmitted || loading)
+      return
 
-  }, [error, success, isSubmitted])
+    if(success){
+      showSuccessMessage()
+      handleClose()
+    } else if (error)
+      showErrorMessage(error.toString())
+
+    setIsSubmitted(false)
+  }, [error, success, isSubmitted, showSuccessMessage, showErrorMessage, handleClose, loading])
 
   return (
     <Dialog

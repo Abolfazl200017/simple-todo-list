@@ -65,6 +65,7 @@ export const todosSlice = createSlice({
           }
         }
         state.success = true
+        state.loading = false
       }
     }
   },
