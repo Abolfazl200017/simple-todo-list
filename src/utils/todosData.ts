@@ -5,13 +5,13 @@ let userId: number | null = null;
 let userTodos: UserTodos | null = null;
 let usersTodos: UsersTodos | null = null;
 
-const InitialUserTodos = <UserTodos>{ 'inbox': { config: { color: null, name: 'صندوق ورودی'}, todos: []}}
+const initialUserTodos = <UserTodos>{ 'inbox': { config: { color: null, name: 'صندوق'}, todos: []}}
 
 function setUserTodosFromStorage(id: number) {
   const todos = getTodosFromLocalStorage();
   userId = id;
-  usersTodos = todos || { [id]: { ...InitialUserTodos } };
-  userTodos = usersTodos[id] || { ...InitialUserTodos };
+  usersTodos = todos || { [id]: { ...initialUserTodos } };
+  userTodos = usersTodos[id] || { ...initialUserTodos };
   if(JSON.stringify(usersTodos) !== JSON.stringify(todos))
     setTodosOnLocalStorage(usersTodos)
 }

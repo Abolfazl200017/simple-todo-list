@@ -23,7 +23,7 @@ export type UserTodos = {
 
 export type TodosState = {
   loading: boolean;
-  todos: UserTodos | null;
+  todos: UserTodos;
   error: Error | null | unknown;
   success: boolean;
 };
