@@ -10,7 +10,7 @@ import { RouterConfig } from 'navigation/RouterConfig';
 function App() {
   return (
     <>
-      <div className="min-w-screen min-h-screen bg-darkBG text-white">
+      <div className="bg-darkBG text-white">
         <AppProviders>
           <CssBaseline />
           <RouterConfig />

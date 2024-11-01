@@ -11,6 +11,7 @@ import { registerMe } from '../redux/user/userThunks';
 import MainLayout from 'layouts/MainLayout';
 import ServerError from 'pages/error/ServerError';
 import NotFound from 'pages/error/NotFound';
+import Home from 'pages/Home';
 
 export const RouterConfig = () => {
   const isSubmitted = React.useRef<boolean>(false)
@@ -34,7 +35,7 @@ export const RouterConfig = () => {
       </Route>
       <Route element={<PrivateRoute />}>
         <Route path='/' element={<MainLayout />}>
-          <Route path={HOME} element={<div>hello home</div>}></Route>
+          <Route path={HOME} element={<Home />}></Route>
         </Route>
       </Route>
       <Route path={SERVER_ERROR} element={<ServerError />} />
