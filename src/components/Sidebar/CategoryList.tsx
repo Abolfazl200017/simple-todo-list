@@ -7,7 +7,7 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import Divider from '@mui/material/Divider';
-import MailIcon from '@mui/icons-material/Mail';
+import CircleOutlinedIcon from '@mui/icons-material/CircleOutlined';
 
 function CategoryList({ todos }: { todos: UserTodos }) {
   const customCategories = Object.entries(todos).filter((t) => t[0] !== 'inbox');
@@ -29,11 +29,11 @@ function CategoryList({ todos }: { todos: UserTodos }) {
         <>
           <Divider />
           <List>
-            {customCategories.map((cat, index) => (
+            {customCategories.map((cat) => (
               <RouterLink to={`category/${cat[0]}`}>
               <ListItem key={cat[0]}>
                 <ListItemButton>
-                  <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
+                  <ListItemIcon><CircleOutlinedIcon /></ListItemIcon>
                   <ListItemText primary={cat[1].config.name} />
                 </ListItemButton>
               </ListItem>
