@@ -2,10 +2,10 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import CssBaseline from '@mui/material/CssBaseline';
 import Header from 'components/Header';
-import Sidebar from 'components/Sidebar';
 import Main from 'components/Main';
 import { useAppDispatch, useUserState } from '../redux/hooks';
 import { initState } from '../redux/todos/todosSlices';
+import Sidebar from 'components/Sidebar';
 
 export const drawerWidth = 240;
 

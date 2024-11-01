@@ -1,7 +1,7 @@
 import { DRAWER_WIDTH } from 'config/CONSTANT';
-import { DrawerHeader } from './Sidebar';
 import { styled } from '@mui/material/styles';
 import { Outlet } from 'react-router-dom';
+import { DrawerHeader } from './Sidebar/SidebarView';
 
 const MUIMain = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })<{
   open?: boolean;
