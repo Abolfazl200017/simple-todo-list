@@ -28,11 +28,11 @@ function AddDialog({ open, handleClose }) {
   const enqueueSnackbar = useSnackbar();
 
   const showSuccessMessage = React.useCallback(() => {
-    enqueueSnackbar(`دسته‌بندی جدید با موفقیت ایجاد شد.`, { variant: 'success' });
+    enqueueSnackbar(`دسته‌بندی جدید با موفقیت ایجاد شد.`, { variant: 'success', autoHideDuration: 3000 });
   }, [enqueueSnackbar]);
 
   const showErrorMessage = React.useCallback((errorMessage: string) => {
-    enqueueSnackbar(errorMessage, { variant: 'error' });
+    enqueueSnackbar(errorMessage, { variant: 'error', autoHideDuration: 3000 });
   }, [enqueueSnackbar]);
 
   React.useEffect(() => {

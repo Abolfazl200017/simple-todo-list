@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { getUserTodos } from 'utils/todosData';
+import { getUserTodos, updateUserTodos } from 'utils/todosData';
 
 export type Todo = {
   id: string;
@@ -66,6 +66,7 @@ export const todosSlice = createSlice({
         }
         state.success = true
         state.loading = false
+        updateUserTodos(state.todos)
       }
     }
   },

@@ -30,12 +30,14 @@ function CategoryList({ todos }: { todos: UserTodos }) {
           <Divider />
           <List>
             {customCategories.map((cat, index) => (
+              <RouterLink to={`category/${cat[0]}`}>
               <ListItem key={cat[0]}>
                 <ListItemButton>
                   <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
                   <ListItemText primary={cat[1].config.name} />
                 </ListItemButton>
               </ListItem>
+              </RouterLink>
             ))}
           </List>
         </>
