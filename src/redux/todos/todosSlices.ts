@@ -9,14 +9,16 @@ export type Todo = {
   category: string;
 };
 
-export type Category = {
+export type CategoryConfig = {
   name: string;
   color: string | null;
 };
 
 export type UserTodos = {
-  categories: Category[];
-  todos: Todo[];
+  [key: string]: {
+    config: CategoryConfig;
+    todos: Todo[];
+  }
 };
 
 export type TodosState = {

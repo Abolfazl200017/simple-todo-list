@@ -5,10 +5,7 @@ let userId: number | null = null;
 let userTodos: UserTodos | null = null;
 let usersTodos: UsersTodos | null = null;
 
-export const InitialUserTodos: UserTodos = {
-  categories: [],
-  todos: [],
-};
+const InitialUserTodos = <UserTodos>{ 'inbox': { config: { color: null, name: 'صندوق ورودی'}, todos: []}}
 
 function setUserTodosFromStorage(id: number) {
   const todos = getTodosFromLocalStorage();
