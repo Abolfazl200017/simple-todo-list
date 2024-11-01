@@ -15,8 +15,14 @@ import { styled, useTheme } from '@mui/material/styles';
 import { DRAWER_WIDTH } from 'config/CONSTANT';
 import { useTodoState } from '../redux/hooks';
 import { Link as RouterLink } from 'react-router-dom';
-import { Skeleton } from '@mui/material';
+import { Button, Skeleton } from '@mui/material';
 import { UserTodos } from '../redux/todos/todosSlices';
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogTitle from '@mui/material/DialogTitle';
+import TextField from '@mui/material/TextField';
 
 export const DrawerHeader = styled('div')(({ theme }) => ({
   display: 'flex',
@@ -72,9 +78,54 @@ function CategoryList({ todos }: { todos: UserTodos }) {
   );
 }
 
+function AddDialog({ open, handleClose }) {
+  return (
+    <Dialog
+      open={open}
+      onClose={handleClose}
+      PaperProps={{
+        component: 'form',
+        onSubmit: (event: React.FormEvent<HTMLFormElement>) => {
+          event.preventDefault();
+          const formData = new FormData(event.currentTarget);
+          const formJson = Object.fromEntries((formData).entries());
+          const email = formJson.email;
+          console.log(email);
+          handleClose();
+        },
+      }}
+    >
+      <DialogTitle>افزودن دسته‌بندی</DialogTitle>
+      <DialogContent>
+        <DialogContentText>
+          To subscribe to this website, please enter your email address here. We will send updates occasionally.
+        </DialogContentText>
+        <TextField
+          autoFocus
+          required
+          margin="dense"
+          id="name"
+          name="name"
+          label="نام دسته‌بندی"
+          type="text"
+          fullWidth
+          variant="standard"
+        />
+      </DialogContent>
+      <DialogActions>
+        <Button onClick={handleClose}>انصراف</Button>
+        <Button type="submit">افزودن</Button>
+      </DialogActions>
+    </Dialog>
+  );
+}
+
 function Sidebar({ handleDrawerClose, open }) {
   const theme = useTheme();
   const { todos } = useTodoState();
+  const [ showDialog, setShowDialog ] = React.useState(false)
+
+  const handleDialogClose = () => setShowDialog(false)
 
   React.useEffect(() => {
     if (todos) console.log('todos', todos);
@@ -102,6 +153,11 @@ function Sidebar({ handleDrawerClose, open }) {
       </DrawerHeader>
       <Divider />
       {!todos ? <CategorySkeleton /> : <CategoryList todos={todos} />}
+      <Divider />
+      <div className="mt-3 px-3">
+        <Button onClick={() => setShowDialog(true)}>افزودن دسته‌بندی</Button>
+      </div>
+      <AddDialog open={showDialog} handleClose={handleDialogClose} />
     </Drawer>
   );
 }
