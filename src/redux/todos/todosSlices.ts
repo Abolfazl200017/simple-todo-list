@@ -45,8 +45,30 @@ export const todosSlice = createSlice({
       state.success = true;
       state.loading = false;
     },
+    addCategory: (state, action: PayloadAction<{ name: string }>) => {
+      state.loading = true;
+      state.error = null;
+      state.success = false;
+
+      if(state.todos[action.payload.name]){
+        state.loading = false
+        state.error = 'نام وارد شده تکراری میباشد!'
+      } else {
+        state.todos = {
+          ...state.todos,
+          [action.payload.name]: {
+            config: {
+              color: null,
+              name: action.payload.name,
+            },
+            todos: []
+          }
+        }
+        state.success = true
+      }
+    }
   },
 });
 
-export const { initState } = todosSlice.actions;
+export const { initState, addCategory } = todosSlice.actions;
 export default todosSlice.reducer;

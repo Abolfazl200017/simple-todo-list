@@ -1,3 +1,4 @@
+import * as React from "react";
 import { Button } from '@mui/material';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
@@ -5,22 +6,39 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import TextField from '@mui/material/TextField';
+import { useAppDispatch, useTodoState } from '../../redux/hooks';
+import { addCategory } from '../../redux/todos/todosSlices';
+
+type Dispatch = (arg0: { payload: { name: string; }; type: "todosSlice/addCategory"; }) => void
+
+const handleSubmit = (event: React.FormEvent<HTMLFormElement>, dispatch: Dispatch, setIsSubmitted: (arg0: boolean) => void) => {
+  event.preventDefault();
+  const formData = new FormData(event.currentTarget);
+  const formJson = Object.fromEntries((formData).entries());
+  const name:string = formJson.name.toString()
+  dispatch(addCategory({ name }))
+  setIsSubmitted(true)
+}
 
 function AddDialog({ open, handleClose }) {
+  const { error, success } = useTodoState()
+  const [ isSubmitted, setIsSubmitted ] = React.useState(false)
+  const dispatch = useAppDispatch()
+
+  React.useEffect(() => {
+    console.log('error', error)
+    console.log("success", success)
+    console.log("is submitted", isSubmitted)
+
+  }, [error, success, isSubmitted])
+
   return (
     <Dialog
       open={open}
       onClose={handleClose}
       PaperProps={{
         component: 'form',
-        onSubmit: (event: React.FormEvent<HTMLFormElement>) => {
-          event.preventDefault();
-          const formData = new FormData(event.currentTarget);
-          const formJson = Object.fromEntries((formData).entries());
-          const email = formJson.email;
-          console.log(email);
-          handleClose();
-        },
+        onSubmit: (event: React.FormEvent<HTMLFormElement>) => handleSubmit(event, dispatch, setIsSubmitted),
       }}
     >
       <DialogTitle>افزودن دسته‌بندی</DialogTitle>

@@ -15,6 +15,7 @@ export default defineConfig({
       styles: "src/styles",
       assets: "src/assets",
       services: "src/services",
+      contexts: "src/contexts"
     },
   },
 })
