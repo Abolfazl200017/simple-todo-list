@@ -17,7 +17,7 @@ function TaskList({ category, todos }) {
     <>
       {todos.map(([id, todo]) => {
         return (
-          <div key={id}>
+          <div key={id} className={todo.isDone ? 'text-secondary hover:text-secondary' : ''}>
             <Divider sx={{ marginTop: 2, marginBottom: 2 }} />
             <div className="flex items-center transition-colors hover:bg-slate-900 bg-opacity-30 py-3 px-1">
               <button onClick={() => setDoneTodo(id)}>
