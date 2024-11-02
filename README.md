@@ -48,3 +48,18 @@ export default tseslint.config({
   },
 })
 ```
+
+``` login
+Sample of User Pass : 
+
+
+  {
+      "username": "sophiab",
+      "password": "sophiabpass",
+  }
+
+  {
+    "username": "emilys",
+    "password": "emilyspass",
+  }
+```
