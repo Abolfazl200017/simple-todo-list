@@ -104,9 +104,10 @@ export const todosSlice = createSlice({
       let prevTodos = { ...state.todos }
       prevTodos[action.payload.category].todos[action.payload.id].isDone = !prevTodos[action.payload.category].todos[action.payload.id].isDone
       state.todos = { ...prevTodos }
+      updateUserTodos(state.todos);
     }
   },
 });
 
-export const { initState, addCategory, addTodo } = todosSlice.actions;
+export const { initState, addCategory, addTodo, doneTodo   } = todosSlice.actions;
 export default todosSlice.reducer;

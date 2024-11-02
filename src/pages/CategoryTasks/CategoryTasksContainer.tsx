@@ -31,7 +31,7 @@ export const CategoryTasks = () => {
     <div className="w-full text-start px-16">
       <div className="text-2xl font-bold">{name}</div>
 
-      <TaskList todos={Object.entries(todos[name].todos)} />
+      <TaskList category={name} todos={Object.entries(todos[name].todos)} />
 
       <Divider sx={{ marginTop: 2 }} />
       <button
