@@ -15,13 +15,13 @@ export type CategoryConfig = {
 
 export type Todos = {
   [key: string]: Todo;
-}
+};
 
 export type UserTodos = {
   [key: string]: {
     config: CategoryConfig;
     todos: Todos;
-  }
+  };
 };
 
 export type TodosState = {
@@ -31,7 +31,7 @@ export type TodosState = {
   success: boolean;
 };
 
-type AddTodo = {category: string, todo: { title: string, body: string|null }}
+export type AddTodo = { category: string; todo: { title: string; body: string | null } };
 
 const initialState: TodosState = {
   loading: true,
@@ -55,9 +55,9 @@ export const todosSlice = createSlice({
       state.error = null;
       state.success = false;
 
-      if(state.todos[action.payload.name]){
-        state.loading = false
-        state.error = 'نام وارد شده تکراری میباشد!'
+      if (state.todos[action.payload.name]) {
+        state.loading = false;
+        state.error = 'نام وارد شده تکراری میباشد!';
       } else {
         state.todos = {
           ...state.todos,
@@ -66,32 +66,47 @@ export const todosSlice = createSlice({
               color: null,
               name: action.payload.name,
             },
-            todos: {}
-          }
-        }
-        state.success = true
-        state.loading = false
-        updateUserTodos(state.todos)
+            todos: {},
+          },
+        };
+        state.success = true;
+        state.loading = false;
+        updateUserTodos(state.todos);
       }
     },
     addTodo: (state, action: PayloadAction<AddTodo>) => {
-      const id = generateUniqueId()
-      const newTodo:Todo = {
+      state.loading = true;
+      state.error = null;
+      state.success = false;
+      const id = generateUniqueId();
+      const newTodo: Todo = {
         title: action.payload.todo.title,
         body: action.payload.todo.body,
         category: action.payload.category,
         isDone: false,
-      }
+      };
+      const prevCategory = { ...state.todos[action.payload.category] };
       state.todos = {
         ...state.todos,
-        todos: {
-          ...state.todos.todos,
-          [id]: { ...newTodo}
-        }
-      }
+        [action.payload.category]: {
+          config: { ...prevCategory.config },
+          todos: {
+            ...prevCategory.todos,
+            [id]: { ...newTodo },
+          },
+        },
+      };
+      state.success = true;
+      state.loading = false;
+      updateUserTodos(state.todos);
+    },
+    doneTodo: (state, action:PayloadAction<{category: string, id:string}>) => {
+      let prevTodos = { ...state.todos }
+      prevTodos[action.payload.category].todos[action.payload.id].isDone = !prevTodos[action.payload.category].todos[action.payload.id].isDone
+      state.todos = { ...prevTodos }
     }
   },
 });
 
-export const { initState, addCategory } = todosSlice.actions;
+export const { initState, addCategory, addTodo } = todosSlice.actions;
 export default todosSlice.reducer;
