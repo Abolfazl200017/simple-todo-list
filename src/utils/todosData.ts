@@ -5,7 +5,7 @@ let userId: number | null = null;
 let userTodos: UserTodos | null = null;
 let usersTodos: UsersTodos | null = null;
 
-const initialUserTodos = <UserTodos>{ 'inbox': { config: { color: null, name: 'صندوق'}, todos: []}}
+const initialUserTodos = <UserTodos>{ 'inbox': { config: { color: null, name: 'صندوق'}, todos: {}}}
 
 function setUserTodosFromStorage(id: number) {
   const todos = getTodosFromLocalStorage();
@@ -26,4 +26,8 @@ export function updateUserTodos(updatedUserTodos: UserTodos): void {
 export function getUserTodos(id: number): UserTodos {
   setUserTodosFromStorage(id);
   return userTodos;
+}
+
+export function generateUniqueId() {
+  return `${Date.now()}-${Math.floor(Math.random() * 10000)}`;
 }

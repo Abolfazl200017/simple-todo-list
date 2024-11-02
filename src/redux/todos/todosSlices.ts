@@ -1,8 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { getUserTodos, updateUserTodos } from 'utils/todosData';
+import { generateUniqueId, getUserTodos, updateUserTodos } from 'utils/todosData';
 
 export type Todo = {
-  id: string;
   title: string;
   body: string | null;
   isDone: boolean;
@@ -14,10 +13,14 @@ export type CategoryConfig = {
   color: string | null;
 };
 
+export type Todos = {
+  [key: string]: Todo;
+}
+
 export type UserTodos = {
   [key: string]: {
     config: CategoryConfig;
-    todos: Todo[];
+    todos: Todos;
   }
 };
 
@@ -27,6 +30,8 @@ export type TodosState = {
   error: Error | null | unknown;
   success: boolean;
 };
+
+type AddTodo = {category: string, todo: { title: string, body: string|null }}
 
 const initialState: TodosState = {
   loading: true,
@@ -61,12 +66,28 @@ export const todosSlice = createSlice({
               color: null,
               name: action.payload.name,
             },
-            todos: []
+            todos: {}
           }
         }
         state.success = true
         state.loading = false
         updateUserTodos(state.todos)
+      }
+    },
+    addTodo: (state, action: PayloadAction<AddTodo>) => {
+      const id = generateUniqueId()
+      const newTodo:Todo = {
+        title: action.payload.todo.title,
+        body: action.payload.todo.body,
+        category: action.payload.category,
+        isDone: false,
+      }
+      state.todos = {
+        ...state.todos,
+        todos: {
+          ...state.todos.todos,
+          [id]: { ...newTodo}
+        }
       }
     }
   },

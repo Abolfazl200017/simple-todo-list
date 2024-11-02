@@ -31,7 +31,7 @@ const MUIMain = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })
 function Main({ open }) {
 
   return (
-    <MUIMain open={open} className='min-h-screen' style={{ paddingRight: drawerWidth }}>
+    <MUIMain open={open} className='min-h-screen' style={{ paddingRight: drawerWidth+24 }}>
         <DrawerHeader />
         <Outlet />
     </MUIMain>

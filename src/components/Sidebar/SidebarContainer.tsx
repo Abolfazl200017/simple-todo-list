@@ -11,11 +11,6 @@ function SidebarContainer({ handleDrawerClose, open }) {
   const handleDialogClose = React.useCallback(() => setIsShowDialog(false), [])
   const openDialog = () => setIsShowDialog(true)
 
-  React.useEffect(() => {
-    if (todos) console.log('todos', todos);
-  }, [todos]);
-
-
   return <SidebarView todos={todos} isShowDialog={isShowDialog} openDialog={openDialog} handleDialogClose={handleDialogClose} handleDrawerClose={handleDrawerClose} theme={theme} open={open} />
 }
 

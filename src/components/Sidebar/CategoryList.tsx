@@ -1,4 +1,4 @@
-import { UserTodos } from "../../redux/todos/todosSlices";
+import { UserTodos } from '../../redux/todos/todosSlices';
 import List from '@mui/material/List';
 import { Link as RouterLink } from 'react-router-dom';
 import ListItem from '@mui/material/ListItem';
@@ -7,7 +7,7 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import Divider from '@mui/material/Divider';
-import CircleOutlinedIcon from '@mui/icons-material/CircleOutlined';
+import ChecklistRtlIcon from '@mui/icons-material/ChecklistRtl';
 
 function CategoryList({ todos }: { todos: UserTodos }) {
   const customCategories = Object.entries(todos).filter((t) => t[0] !== 'inbox');
@@ -30,13 +30,15 @@ function CategoryList({ todos }: { todos: UserTodos }) {
           <Divider />
           <List>
             {customCategories.map((cat) => (
-              <RouterLink to={`category/${cat[0]}`}>
-              <ListItem key={cat[0]}>
-                <ListItemButton>
-                  <ListItemIcon><CircleOutlinedIcon /></ListItemIcon>
-                  <ListItemText primary={cat[1].config.name} />
-                </ListItemButton>
-              </ListItem>
+              <RouterLink key={cat[0]} to={`category/${cat[0]}`}>
+                <ListItem>
+                  <ListItemButton>
+                    <ListItemIcon>
+                      <ChecklistRtlIcon />
+                    </ListItemIcon>
+                    <ListItemText primary={cat[1].config.name} />
+                  </ListItemButton>
+                </ListItem>
               </RouterLink>
             ))}
           </List>
@@ -46,4 +48,4 @@ function CategoryList({ todos }: { todos: UserTodos }) {
   );
 }
 
-export default CategoryList
+export default CategoryList;
