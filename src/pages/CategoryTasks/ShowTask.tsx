@@ -7,7 +7,13 @@ function ShowTaskDialog({ open, handleOpen, handleClose, title, body }) {
         {title}
       </button>
 
-      <Dialog open={open} onClose={handleClose}>
+      <Dialog
+        open={open}
+        onClose={handleClose}
+        PaperProps={{
+          sx: { minWidth: '300px' }, // Set the minimum width here
+        }}
+      >
         <DialogTitle>{title}</DialogTitle>
         <DialogContent>{body}</DialogContent>
         <DialogActions>
