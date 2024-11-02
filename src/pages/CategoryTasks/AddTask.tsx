@@ -33,7 +33,7 @@ const handleSubmit = (
   setIsSubmitted(true);
 };
 
-function AddTaskDialog({ open, handleClose, categoryName }) {
+function  AddTaskDialog({ open, handleClose, categoryName }) {
   const { error, success, loading } = useTodoState();
   const [isSubmitted, setIsSubmitted] = React.useState(false);
   const dispatch = useAppDispatch();
@@ -95,6 +95,7 @@ function AddTaskDialog({ open, handleClose, categoryName }) {
             backgroundColor: 'background.paper', // Use the theme background color
             color: 'text.primary', // Use the theme text color
             borderRadius: '4px',
+            marginTop: 3,
           }}
         />
       </DialogContent>

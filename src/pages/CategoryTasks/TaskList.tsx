@@ -23,9 +23,8 @@ function TaskList({ category, todos }) {
               <button onClick={() => setDoneTodo(id)}>
                 {!todo.isDone ? <CircleOutlinedIcon /> : <CheckCircleOutlineOutlinedIcon />}
               </button>
-              <button onClick={handleOpen} className='mr-3 hover:text-text transition-colors'>{todo.title}</button>
+              <ShowTaskDialog open={open} handleOpen={handleOpen} handleClose={handleClose} title={todo.title} body={todo.body} />
             </div>
-            <ShowTaskDialog open={open} handleClose={handleClose} title={todo.title} body={todo.body} />
           </div>
         );
       })}

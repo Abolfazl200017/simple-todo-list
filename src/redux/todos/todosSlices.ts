@@ -101,7 +101,7 @@ export const todosSlice = createSlice({
       updateUserTodos(state.todos);
     },
     doneTodo: (state, action:PayloadAction<{category: string, id:string}>) => {
-      let prevTodos = { ...state.todos }
+      const prevTodos = { ...state.todos }
       prevTodos[action.payload.category].todos[action.payload.id].isDone = !prevTodos[action.payload.category].todos[action.payload.id].isDone
       state.todos = { ...prevTodos }
       updateUserTodos(state.todos);
