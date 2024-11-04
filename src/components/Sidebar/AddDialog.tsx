@@ -8,7 +8,7 @@ import DialogTitle from '@mui/material/DialogTitle';
 import TextField from '@mui/material/TextField';
 import { useAppDispatch, useTodoState } from '../../redux/hooks';
 import { addCategory } from '../../redux/todos/todosSlices';
-import useSnackbar from "components/Snackbar/useSnackbar";
+import useSnackbar from "@components/Snackbar/useSnackbar";
 
 type Dispatch = (arg0: { payload: { name: string; }; type: "todosSlice/addCategory"; }) => void
 

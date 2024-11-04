@@ -1,7 +1,7 @@
 import axios from 'axios';
-import { getAccessTokenToLocalStorage, getRefreshTokenToLocalStorage, removeAccessTokenFromLocalStorage, removeRefreshTokenFromLocalStorage, setAccessTokenToLocalStorage, setRefreshTokenToLocalStorage } from 'utils/localStorage';
+import { getAccessTokenToLocalStorage, getRefreshTokenToLocalStorage, removeAccessTokenFromLocalStorage, removeRefreshTokenFromLocalStorage, setAccessTokenToLocalStorage, setRefreshTokenToLocalStorage } from '../utils/localStorage';
 import { BASE_URL } from './CONSTANT';
-import { SERVER_ERROR } from 'navigation/CONSTANT';
+import { SERVER_ERROR } from '../navigation/CONSTANT';
 
 const axiosInstance = axios.create({
   baseURL: BASE_URL //process.env.REACT_APP_API_BASE_URL

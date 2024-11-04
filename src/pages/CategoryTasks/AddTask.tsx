@@ -7,7 +7,7 @@ import DialogTitle from '@mui/material/DialogTitle';
 import TextField from '@mui/material/TextField';
 import { useAppDispatch, useTodoState } from '../../redux/hooks';
 import { AddTodo, addTodo } from '../../redux/todos/todosSlices';
-import useSnackbar from 'components/Snackbar/useSnackbar';
+import useSnackbar from '@components/Snackbar/useSnackbar';
 
 type Dispatch = (arg0: { payload: AddTodo; type: 'todosSlice/addTodo' }) => void;
 

@@ -1,5 +1,5 @@
 import { useAppDispatch, useUserState } from '../redux/hooks';
-import { DRAWER_WIDTH, WEBSITE_TITLE } from 'config/CONSTANT';
+import { DRAWER_WIDTH, WEBSITE_TITLE } from '@config/CONSTANT';
 import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import { IconButton, styled, Typography } from '@mui/material';

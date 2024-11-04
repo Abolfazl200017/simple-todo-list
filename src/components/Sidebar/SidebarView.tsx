@@ -3,7 +3,7 @@ import IconButton from '@mui/material/IconButton';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import Drawer from '@mui/material/Drawer';
-import { DRAWER_WIDTH } from 'config/CONSTANT';
+import { DRAWER_WIDTH } from '@config/CONSTANT';
 import { Button, styled } from '@mui/material';
 import CategorySkeleton from './CategorySkeleton';
 import CategoryList from './CategoryList';

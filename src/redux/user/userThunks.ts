@@ -1,4 +1,4 @@
-import { LoginForm } from 'navigation/auth/Login';
+import { LoginForm } from '@navigation/auth/Login';
 import { GET_CURRENT_ATHENTICATION, LOGIN } from '../../services/CONSTANT'
 import axios from '../../services/axiosInstance'
 import { createAsyncThunk } from '@reduxjs/toolkit'

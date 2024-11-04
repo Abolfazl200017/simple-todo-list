@@ -6,13 +6,13 @@ import { HOME, LOGIN, SERVER_ERROR } from './CONSTANT';
 import { useAppDispatch } from './../redux/hooks';
 import { setStateForUnknownToken } from '../redux/user/userSlices';
 import PublicRoute from './auth/PublicRoute';
-import { getAccessTokenToLocalStorage } from 'utils/localStorage';
+import { getAccessTokenToLocalStorage } from '@utils/localStorage';
 import { registerMe } from '../redux/user/userThunks';
-import MainLayout from 'layouts/MainLayout';
-import ServerError from 'pages/error/ServerError';
-import NotFound from 'pages/error/NotFound';
-import Home from 'pages/Home';
-import CategoryTasks from 'pages/CategoryTasks';
+import MainLayout from '@layouts/MainLayout';
+import ServerError from '@pages/error/ServerError';
+import NotFound from '@pages/error/NotFound';
+import Home from '@pages/Home';
+import CategoryTasks from '@pages/CategoryTasks';
 
 export const RouterConfig = () => {
   const isSubmitted = React.useRef<boolean>(false)

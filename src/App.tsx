@@ -4,7 +4,7 @@ import './App.css';
 import CssBaseline from '@mui/material/CssBaseline';
 import AppProviders from './contexts/AppProvider';
 
-import { RouterConfig } from 'navigation/RouterConfig';
+import { RouterConfig } from '@navigation/RouterConfig';
 
 
 function App() {

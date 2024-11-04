@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { generateUniqueId, getUserTodos, updateUserTodos } from 'utils/todosData';
+import { generateUniqueId, getUserTodos, updateUserTodos } from '@utils/todosData';
 
 export type Todo = {
   title: string;
