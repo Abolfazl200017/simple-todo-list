@@ -92,6 +92,6 @@ export const userSlice = createSlice({
 
 // Action creators are generated for each case reducer function
 export const { resetUserState, setStateForUnknownToken } = userSlice.actions;
-export { registerUser };
+export { registerUser, registerMe };
 
 export default userSlice.reducer;

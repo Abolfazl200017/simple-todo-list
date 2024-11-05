@@ -10,7 +10,6 @@ import { CacheProvider } from '@emotion/react';
 import createCache from '@emotion/cache';
 import { prefixer } from 'stylis';
 import rtlPlugin from 'stylis-plugin-rtl';
-import { BrowserRouter } from 'react-router-dom';
 
 const theme = createTheme({
   direction: 'rtl',
@@ -30,7 +29,6 @@ const cacheRtl = createCache({
 });
 
 const AppProviders = ({ children }) => (
-  <BrowserRouter>
     <Provider store={store}>
       <CacheProvider value={cacheRtl}>
         <ThemeProvider theme={theme}>
@@ -41,7 +39,6 @@ const AppProviders = ({ children }) => (
         </ThemeProvider>
       </CacheProvider>
     </Provider>
-  </BrowserRouter>
 );
 
 export default AppProviders;
