@@ -3,20 +3,12 @@ import Box from '@mui/material/Box';
 import CssBaseline from '@mui/material/CssBaseline';
 import Header from 'components/Header';
 import Main from 'components/Main';
-import { useAppDispatch, useUserState } from '../redux/hooks';
-import { initState } from '../redux/todos/todosSlices';
 import Sidebar from 'components/Sidebar';
 
 export const drawerWidth = 240;
 
 function MainLayout() {
-  const [open, setOpen] = React.useState(true);
-  const { userData } = useUserState()
-  const dispatch = useAppDispatch()
-
-  React.useEffect(() => {
-    dispatch(initState({id: userData.id}))
-  }, [dispatch, userData.id])
+  const [open, setOpen] = React.useState(false);
 
   const handleDrawerOpen = () => {
     setOpen(true);

@@ -1,0 +1,396 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "username": "ali_mohammadi",
+      "firstName": "علی",
+      "lastName": "محمدی",
+      "email": "ali.mohammadi@example.com",
+      "gender": "male",
+      "age": 30
+    },
+    {
+      "id": 2,
+      "username": "zahra_ahmadi",
+      "firstName": "زهرا",
+      "lastName": "احمدی",
+      "email": "zahra.ahmadi@example.com",
+      "gender": "female",
+      "age": 25
+    },
+    {
+      "id": 3,
+      "username": "reza_hosseini",
+      "firstName": "رضا",
+      "lastName": "حسینی",
+      "email": "reza.hosseini@example.com",
+      "gender": "male",
+      "age": 40
+    },
+    {
+      "id": 4,
+      "username": "sara_jafari",
+      "firstName": "سارا",
+      "lastName": "جعفری",
+      "email": "sara.jafari@example.com",
+      "gender": "female",
+      "age": 28
+    },
+    {
+      "id": 5,
+      "username": "mohammad_rezaei",
+      "firstName": "محمد",
+      "lastName": "رضایی",
+      "email": "mohammad.rezaei@example.com",
+      "gender": "male",
+      "age": 33
+    },
+    {
+      "id": 6,
+      "username": "fatemeh_kazemi",
+      "firstName": "فاطمه",
+      "lastName": "کاظمی",
+      "email": "fatemeh.kazemi@example.com",
+      "gender": "female",
+      "age": 27
+    },
+    {
+      "id": 7,
+      "username": "hossein_alavi",
+      "firstName": "حسین",
+      "lastName": "علوی",
+      "email": "hossein.alavi@example.com",
+      "gender": "male",
+      "age": 45
+    },
+    {
+      "id": 8,
+      "username": "leila_mostafavi",
+      "firstName": "لیلا",
+      "lastName": "مصطفوی",
+      "email": "leila.mostafavi@example.com",
+      "gender": "female",
+      "age": 26
+    },
+    {
+      "id": 9,
+      "username": "masoud_moradi",
+      "firstName": "مسعود",
+      "lastName": "مرادی",
+      "email": "masoud.moradi@example.com",
+      "gender": "male",
+      "age": 29
+    },
+    {
+      "id": 10,
+      "username": "narges_karimi",
+      "firstName": "نرگس",
+      "lastName": "کریمی",
+      "email": "narges.karimi@example.com",
+      "gender": "female",
+      "age": 32
+    },
+    {
+      "id": 11,
+      "username": "sina_safari",
+      "firstName": "سینا",
+      "lastName": "صفری",
+      "email": "sina.safari@example.com",
+      "gender": "male",
+      "age": 37
+    },
+    {
+      "id": 12,
+      "username": "elham_yazdani",
+      "firstName": "الهام",
+      "lastName": "یزدانی",
+      "email": "elham.yazdani@example.com",
+      "gender": "female",
+      "age": 31
+    },
+    {
+      "id": 13,
+      "username": "amir_akbari",
+      "firstName": "امیر",
+      "lastName": "اکبری",
+      "email": "amir.akbari@example.com",
+      "gender": "male",
+      "age": 34
+    },
+    {
+      "id": 14,
+      "username": "samira_nikfar",
+      "firstName": "سمیرا",
+      "lastName": "نیکفر",
+      "email": "samira.nikfar@example.com",
+      "gender": "female",
+      "age": 29
+    },
+    {
+      "id": 15,
+      "username": "reza_farhadi",
+      "firstName": "رضا",
+      "lastName": "فرهادی",
+      "email": "reza.farhadi@example.com",
+      "gender": "male",
+      "age": 39
+    },
+    {
+      "id": 16,
+      "username": "mahnaz_saberi",
+      "firstName": "مهناز",
+      "lastName": "صبوری",
+      "email": "mahnaz.saberi@example.com",
+      "gender": "female",
+      "age": 24
+    },
+    {
+      "id": 17,
+      "username": "bahram_rahmani",
+      "firstName": "بهرام",
+      "lastName": "رحمانی",
+      "email": "bahram.rahmani@example.com",
+      "gender": "male",
+      "age": 43
+    },
+    {
+      "id": 18,
+      "username": "maryam_farahani",
+      "firstName": "مریم",
+      "lastName": "فراهانی",
+      "email": "maryam.farahani@example.com",
+      "gender": "female",
+      "age": 36
+    },
+    {
+      "id": 19,
+      "username": "arash_pourmohammadi",
+      "firstName": "آرش",
+      "lastName": "پورمحمدی",
+      "email": "arash.pourmohammadi@example.com",
+      "gender": "male",
+      "age": 30
+    },
+    {
+      "id": 20,
+      "username": "shirin_mohtashami",
+      "firstName": "شیرین",
+      "lastName": "محتشمی",
+      "email": "shirin.mohtashami@example.com",
+      "gender": "female",
+      "age": 22
+    }
+  ],
+  "articles": [
+    {
+      "id": 1,
+      "title": "راهنمای سفر به شیراز",
+      "content": "شیراز یکی از زیباترین شهرهای ایران است.",
+      "author": "علی محمدی",
+      "date": "2023-01-01"
+    },
+    {
+      "id": 2,
+      "title": "فرهنگ و تاریخ اصفهان",
+      "content": "اصفهان دارای تاریخی غنی و فرهنگ متنوع است.",
+      "author": "زهرا احمدی",
+      "date": "2023-02-01"
+    },
+    {
+      "id": 3,
+      "title": "تکنولوژی و نوآوری در ایران",
+      "content": "ایران در سال‌های اخیر در حوزه تکنولوژی پیشرفت‌های زیادی داشته است.",
+      "author": "رضا حسینی",
+      "date": "2023-03-01"
+    },
+    {
+      "id": 4,
+      "title": "رژیم غذایی سالم",
+      "content": "در این مقاله به نکاتی درباره رژیم غذایی سالم می‌پردازیم.",
+      "author": "سارا جعفری",
+      "date": "2023-03-05"
+    },
+    {
+      "id": 5,
+      "title": "راهنمای خرید خودرو در ایران",
+      "content": "در این مقاله به معرفی بهترین خودروهای بازار ایران می‌پردازیم.",
+      "author": "محمد رضایی",
+      "date": "2023-04-15"
+    },
+    {
+      "id": 6,
+      "title": "جاذبه‌های گردشگری شمال ایران",
+      "content": "شمال ایران یکی از مقاصد محبوب گردشگری است.",
+      "author": "فاطمه کاظمی",
+      "date": "2023-05-01"
+    },
+    {
+      "id": 7,
+      "title": "ورزش و سلامتی",
+      "content": "ورزش نقش مهمی در سلامتی جسم و روان دارد.",
+      "author": "حسین علوی",
+      "date": "2023-06-10"
+    },
+    {
+      "id": 8,
+      "title": "زندگی در تهران",
+      "content": "تهران به عنوان پایتخت ایران چالش‌ها و فرصت‌های زیادی دارد.",
+      "author": "لیلا مصطفوی",
+      "date": "2023-07-01"
+    },
+    {
+      "id": 9,
+      "title": "تحصیل در خارج از کشور",
+      "content": "در این مقاله به راهنمای تحصیل در خارج از کشور می‌پردازیم.",
+      "author": "مسعود مرادی",
+      "date": "2023-07-10"
+    },
+    {
+      "id": 10,
+      "title": "رمز موفقیت در کسب و کار",
+      "content": "رازهای موفقیت در کسب و کار را در این مقاله بخوانید.",
+      "author": "نرگس کریمی",
+      "date": "2023-08-01"
+    },
+    {
+      "id": 11,
+      "title": "تاثیر شبکه‌های اجتماعی",
+      "content": "شبکه‌های اجتماعی چه تاثیری بر زندگی ما دارند؟",
+      "author": "سینا صفری",
+      "date": "2023-08-10"
+    },
+    {
+      "id": 12,
+      "title": "نکاتی برای مدیریت مالی",
+      "content": "مدیریت مالی شخصی یکی از مهارت‌های ضروری است.",
+      "author": "الهام یزدانی",
+      "date": "2023-09-05"
+    },
+    {
+      "id": 13,
+      "title": "نقد فیلم‌های ایرانی",
+      "content": "در این مقاله به نقد چند فیلم ایرانی می‌پردازیم.",
+      "author": "امیر اکبری",
+      "date": "2023-09-15"
+    },
+    {
+      "id": 14,
+      "title": "تحلیل وضعیت اقتصادی ایران",
+      "content": "بررسی وضعیت اقتصادی ایران در سال جاری.",
+      "author": "سمیرا نیکفر",
+      "date": "2023-10-01"
+    },
+    {
+      "id": 15,
+      "title": "روش‌های کاهش استرس",
+      "content": "استرس یکی از مشکلات رایج زندگی مدرن است.",
+      "author": "رضا فرهادی",
+      "date": "2023-10-10"
+    },
+    {
+      "id": 16,
+      "title": "نقش خانواده در تربیت کودکان",
+      "content": "تاثیر خانواده در تربیت و رشد کودکان بسیار مهم است.",
+      "author": "مهناز صبوری",
+      "date": "2023-10-20"
+    },
+    {
+      "id": 17,
+      "title": "مدیریت زمان",
+      "content": "چگونه می‌توانیم زمان خود را بهینه مدیریت کنیم.",
+      "author": "بهرام رحمانی",
+      "date": "2023-10-30"
+    },
+    {
+      "id": 18,
+      "title": "یادگیری زبان‌های خارجی",
+      "content": "مزایای یادگیری زبان‌های خارجی چیست؟",
+      "author": "مریم فراهانی",
+      "date": "2023-11-05"
+    },
+    {
+      "id": 19,
+      "title": "اهمیت خواب کافی",
+      "content": "خواب کافی یکی از مهم‌ترین عوامل سلامتی است.",
+      "author": "آرش پورمحمدی",
+      "date": "2023-11-10"
+    },
+    {
+      "id": 20,
+      "title": "عکاسی طبیعت",
+      "content": "عکاسی طبیعت یکی از سرگرمی‌های جذاب است.",
+      "author": "شیرین محتشمی",
+      "date": "2023-11-15"
+    },
+    {
+      "id": 21,
+      "title": "آشنایی با موسیقی سنتی ایران",
+      "content": "موسیقی سنتی ایران یکی از هنرهای اصیل کشور است.",
+      "author": "علی محمدی",
+      "date": "2023-11-20"
+    },
+    {
+      "id": 22,
+      "title": "راهنمای خرید گوشی موبایل",
+      "content": "نکات مهم در خرید گوشی‌های موبایل را در این مقاله بخوانید.",
+      "author": "زهرا احمدی",
+      "date": "2023-11-25"
+    },
+    {
+      "id": 23,
+      "title": "آینده انرژی‌های تجدیدپذیر",
+      "content": "انرژی‌های تجدیدپذیر یکی از محورهای توسعه پایدار است.",
+      "author": "رضا حسینی",
+      "date": "2023-11-30"
+    },
+    {
+      "id": 24,
+      "title": "فواید یوگا برای سلامتی",
+      "content": "یوگا می‌تواند به بهبود سلامتی بدن و ذهن کمک کند.",
+      "author": "سارا جعفری",
+      "date": "2023-12-01"
+    },
+    {
+      "id": 25,
+      "title": "آموزش مهارت‌های زندگی",
+      "content": "مهارت‌های زندگی یکی از نیازهای ضروری هر فرد است.",
+      "author": "محمد رضایی",
+      "date": "2023-12-10"
+    },
+    {
+      "id": 26,
+      "title": "کسب و کارهای اینترنتی",
+      "content": "کسب و کارهای اینترنتی در سال‌های اخیر رشد چشمگیری داشته‌اند.",
+      "author": "فاطمه کاظمی",
+      "date": "2023-12-15"
+    },
+    {
+      "id": 27,
+      "title": "تکنیک‌های عکاسی حرفه‌ای",
+      "content": "نکاتی برای عکاسی حرفه‌ای را در این مقاله یاد بگیرید.",
+      "author": "حسین علوی",
+      "date": "2023-12-20"
+    },
+    {
+      "id": 28,
+      "title": "محبوب‌ترین کتاب‌های فارسی",
+      "content": "کتاب‌های فارسی محبوبی که نباید از دست بدهید.",
+      "author": "لیلا مصطفوی",
+      "date": "2023-12-25"
+    },
+    {
+      "id": 29,
+      "title": "راهنمای خرید لپ‌تاپ",
+      "content": "نکات مهم در خرید لپ‌تاپ را در این مقاله بخوانید.",
+      "author": "مسعود مرادی",
+      "date": "2024-01-01"
+    },
+    {
+      "id": 30,
+      "title": "آینده فناوری در جهان",
+      "content": "تحلیل روندهای فناوری و آینده آن در جهان.",
+      "author": "نرگس کریمی",
+      "date": "2024-01-10"
+    }
+  ]
+}

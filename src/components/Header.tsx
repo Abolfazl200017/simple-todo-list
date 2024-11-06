@@ -1,10 +1,8 @@
-import { useAppDispatch, useUserState } from '../redux/hooks';
 import { DRAWER_WIDTH, WEBSITE_TITLE } from 'config/CONSTANT';
 import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import { IconButton, styled, Typography } from '@mui/material';
 import MuiAppBar, { AppBarProps as MuiAppBarProps } from '@mui/material/AppBar';
-import { resetUserState } from '../redux/user/userSlices';
 
 interface AppBarProps extends MuiAppBarProps {
     open?: boolean;
@@ -34,9 +32,6 @@ interface AppBarProps extends MuiAppBarProps {
 
   
 function Header({ handleDrawerOpen, open }) {
-  const { userData } = useUserState();
-  const dispatch = useAppDispatch();
-  const logout = () => dispatch(resetUserState())
 
   return (
     <AppBar position="fixed" open={open}>
@@ -64,19 +59,7 @@ function Header({ handleDrawerOpen, open }) {
           </Typography>
         </div>
         <div className="flex-items-center">
-          <button onClick={logout} className='font-semibold text-sm hover:opacity-75 transition-opacity'>
-            logout
-          </button>
-          <div className='mr-2 flex items-center select-none'>
-            <span>
-                {userData.firstName}
-                <span className='mx-1'></span>
-                {userData.lastName}
-            </span>
-          </div>
-          <div className="h-16 py-3 mr-2">
-            <img className="h-full aspect-square rounded-full overflow-hidden" src={userData?.image} />
-          </div>
+            nothing
         </div>
       </Toolbar>
     </AppBar>
