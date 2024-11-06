@@ -14,7 +14,7 @@ import rtlPlugin from 'stylis-plugin-rtl';
 const theme = createTheme({
   direction: 'rtl',
   palette: {
-    mode: 'dark'
+    mode: 'dark',
   },
   typography: {
     fontFamily: [
