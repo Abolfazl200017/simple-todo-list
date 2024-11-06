@@ -1,45 +1,93 @@
-import { TodosState } from "../../redux/todos/todosSlices"
-import { getStoreWithState, RootState } from "../../redux/store"
-import { registerUser } from "redux/user/userThunks";
+// userThunks.test.ts
+import { registerUser, registerMe } from '../../redux/user/userThunks';
+import { UserData } from 'redux/user/userSlices';
+import axios from '../../services/axiosInstance';
+import axiosMock from 'axios-mock-adapter';
+import { configureStore } from '@reduxjs/toolkit';
+import userReducer from '../../redux/user/userSlices';
+import { GET_CURRENT_ATHENTICATION, LOGIN } from '../../services/CONSTANT';
 
-describe("thunks", () => {
-  describe("checkoutCart w/full redux store", () => {
-    it("should checkout with items", async () => {
-      const state = getStateWithUserInfo();
-      const store = getStoreWithState(state);
-      await store.dispatch(registerUser({username: 'emilys', password: 'emilysPass'}));
-      expect(store.getState().user).toEqual({
-        {
-          username: 
-        }
-      })
+const mock = new axiosMock(axios);
+
+describe('userThunks', () => {
+
+  afterEach(() => {
+    mock.reset();
+  });
+
+  describe('registerUser', () => {
+    it('dispatches fulfilled action and returns user data on success', async () => {
+      const mockUserData: UserData = {
+        id: 1,
+        username: 'testuser',
+        email: 'test@example.com',
+        firstName: 'Test',
+        lastName: 'User',
+        gender: 'male',
+        image: 'http://example.com/image.png',
+        accessToken: 'fake-access-token',
+        refreshToken: 'fake-refresh-token',
+      };
+
+      mock.onPost(LOGIN).reply(200, mockUserData);
+
+      const store = configureStore({ reducer: { user: userReducer } });
+
+      const result = await store.dispatch(registerUser({ username: 'emilys', password: 'emilyspass' }));
+
+      expect(result.type).toBe('user/register/fulfilled');
+      expect(result.payload).toEqual(mockUserData);
+    });
+
+    it('dispatches rejected action and returns error message on failure', async () => {
+      const errorMessage = 'Invalid credentials';
+
+      mock.onPost(LOGIN).reply(400, { message: errorMessage });
+
+      const store = configureStore({ reducer: { user: userReducer } });
+
+      const result = await store.dispatch(registerUser({ username: 'testuser', password: 'wrongpassword' }));
+
+      expect(result.type).toBe('user/register/rejected');
+      expect(result.payload).toBe(errorMessage);
+    });
+  });
+
+  describe('registerMe', () => {
+    it('dispatches fulfilled action and returns user data on success', async () => {
+      const mockUserData: UserData = {
+        id: 1,
+        username: 'testuser',
+        email: 'test@example.com',
+        firstName: 'Test',
+        lastName: 'User',
+        gender: 'male',
+        image: 'http://example.com/image.png',
+        accessToken: 'fake-access-token',
+        refreshToken: 'fake-refresh-token',
+      };
+
+      mock.onGet(GET_CURRENT_ATHENTICATION).reply(200, mockUserData);
+
+      const store = configureStore({ reducer: { user: userReducer } });
+
+      const result = await store.dispatch(registerMe());
+
+      expect(result.type).toBe('user/me/fulfilled');
+      expect(result.payload).toEqual(mockUserData);
+    });
+
+    it('dispatches rejected action and returns error message on failure', async () => {
+      const errorMessage = 'Unauthorized';
+      
+      mock.onGet(GET_CURRENT_ATHENTICATION).reply(401, { message: errorMessage });
+
+      const store = configureStore({ reducer: { user: userReducer } });
+
+      const result = await store.dispatch(registerMe());
+
+      expect(result.type).toBe('user/me/rejected');
+      expect(result.payload).toBe(errorMessage);
     });
   });
 });
-
-function getStateWithUserInfo(): RootState {
-  const state: RootState = {
-    todo: {} as TodosState,
-    user: {
-      success: true,
-      error: null,
-      initialized: true,
-      loading: false,
-      userToken: {
-        "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJlbWlseXMiLCJlbWFpbCI6ImVtaWx5LmpvaG5zb25AeC5kdW1teWpzb24uY29tIiwiZmlyc3ROYW1lIjoiRW1pbHkiLCJsYXN0TmFtZSI6IkpvaG5zb24iLCJnZW5kZXIiOiJmZW1hbGUiLCJpbWFnZSI6Imh0dHBzOi8vZHVtbXlqc29uLmNvbS9pY29uL2VtaWx5cy8xMjgiLCJpYXQiOjE3MzA4MDY1NjEsImV4cCI6MTczMDgxMDE2MX0.sYI45IGhC5BWBwK4k-BEN0uzyH0xV-YS1F4YJl8O9Tg",
-        "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJlbWlseXMiLCJlbWFpbCI6ImVtaWx5LmpvaG5zb25AeC5kdW1teWpzb24uY29tIiwiZmlyc3ROYW1lIjoiRW1pbHkiLCJsYXN0TmFtZSI6IkpvaG5zb24iLCJnZW5kZXIiOiJmZW1hbGUiLCJpbWFnZSI6Imh0dHBzOi8vZHVtbXlqc29uLmNvbS9pY29uL2VtaWx5cy8xMjgiLCJpYXQiOjE3MzA4MDY1NjEsImV4cCI6MTczMzM5ODU2MX0.X-Pvn3EPa2eOlvNSymFft4CgGpXIf9-2HlNx5OQbVRs",    
-      },
-      userData: {
-        "id": 1,
-        "firstName": "Emily",
-        "lastName": "Johnson",
-        "gender": "female",
-        "email": "emily.johnson@x.dummyjson.com",
-        "username": "emilys",
-        "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJlbWlseXMiLCJlbWFpbCI6ImVtaWx5LmpvaG5zb25AeC5kdW1teWpzb24uY29tIiwiZmlyc3ROYW1lIjoiRW1pbHkiLCJsYXN0TmFtZSI6IkpvaG5zb24iLCJnZW5kZXIiOiJmZW1hbGUiLCJpbWFnZSI6Imh0dHBzOi8vZHVtbXlqc29uLmNvbS9pY29uL2VtaWx5cy8xMjgiLCJpYXQiOjE3MzA4MDY1NjEsImV4cCI6MTczMDgxMDE2MX0.sYI45IGhC5BWBwK4k-BEN0uzyH0xV-YS1F4YJl8O9Tg",
-        "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJlbWlseXMiLCJlbWFpbCI6ImVtaWx5LmpvaG5zb25AeC5kdW1teWpzb24uY29tIiwiZmlyc3ROYW1lIjoiRW1pbHkiLCJsYXN0TmFtZSI6IkpvaG5zb24iLCJnZW5kZXIiOiJmZW1hbGUiLCJpbWFnZSI6Imh0dHBzOi8vZHVtbXlqc29uLmNvbS9pY29uL2VtaWx5cy8xMjgiLCJpYXQiOjE3MzA4MDY1NjEsImV4cCI6MTczMzM5ODU2MX0.X-Pvn3EPa2eOlvNSymFft4CgGpXIf9-2HlNx5OQbVRs",    
-      }
-    }
-  }
-  return state
-}

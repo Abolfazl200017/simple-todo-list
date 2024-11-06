@@ -46,6 +46,7 @@ export const registerMe = createAsyncThunk<UserData, void, { rejectValue: string
       )
       return response.data
     } catch (error) {
+      console.log(error, 'erroram')
     // return custom error message from backend if present
       if (error.response && error.response.data.message) {
         return rejectWithValue(error.response.data.message)

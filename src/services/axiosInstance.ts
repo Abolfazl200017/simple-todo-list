@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { getAccessTokenToLocalStorage, getRefreshTokenToLocalStorage, removeAccessTokenFromLocalStorage, removeRefreshTokenFromLocalStorage, setAccessTokenToLocalStorage, setRefreshTokenToLocalStorage } from '../utils/localStorage';
-import { BASE_URL } from './CONSTANT';
+import { BASE_URL, REFRESH_AUTH } from './CONSTANT';
 import { SERVER_ERROR } from '../navigation/CONSTANT';
 
 const axiosInstance = axios.create({
@@ -21,12 +21,12 @@ axiosInstance.interceptors.response.use(
   response => response, // Directly return successful responses.
   async error => {
     const originalRequest = error.config;
-    if (error.response.status === 401 && !originalRequest._retry) {
+    const refreshToken = getRefreshTokenToLocalStorage(); // Retrieve the stored refresh token.
+    if (error.response.status === 401 && !originalRequest._retry && refreshToken) {
       originalRequest._retry = true; // Mark the request as retried to avoid infinite loops.
       try {
-        const refreshToken = getRefreshTokenToLocalStorage(); // Retrieve the stored refresh token.
         // Make a request to your auth server to refresh the token.
-        const response = await axios.post('https://your.auth.server/refresh', {
+        const response = await axios.post(REFRESH_AUTH, {
           refreshToken,
         });
         const { accessToken, refreshToken: newRefreshToken } = response.data;

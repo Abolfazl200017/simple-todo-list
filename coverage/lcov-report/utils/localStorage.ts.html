@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">50% </span>
+                <span class="strong">75% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>10/20</span>
+                <span class='fraction'>15/20</span>
             </div>
         
             
@@ -37,16 +37,16 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">12.5% </span>
+                <span class="strong">75% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>1/8</span>
+                <span class='fraction'>6/8</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">50% </span>
+                <span class="strong">75% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>10/20</span>
+                <span class='fraction'>15/20</span>
             </div>
         
             
@@ -117,7 +117,11 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
@@ -125,19 +129,15 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -161,28 +161,28 @@ export type UsersTodos = {
 }
 &nbsp;
 // Auth token functions
-export function <span class="fstat-no" title="function not covered" >setAccessTokenToLocalStorage(</span>token: string): void {
-<span class="cstat-no" title="statement not covered" >  localStorage.setItem(__ACCESS_TOKEN_KEY__, token);</span>
+export function setAccessTokenToLocalStorage(token: string): void {
+  localStorage.setItem(__ACCESS_TOKEN_KEY__, token);
 }
 &nbsp;
 export function getAccessTokenToLocalStorage(): string | null {
   return localStorage.getItem(__ACCESS_TOKEN_KEY__);
 }
 &nbsp;
-export function <span class="fstat-no" title="function not covered" >removeAccessTokenFromLocalStorage(</span>): void {
-<span class="cstat-no" title="statement not covered" >  localStorage.removeItem(__ACCESS_TOKEN_KEY__);</span>
+export function removeAccessTokenFromLocalStorage(): void {
+  localStorage.removeItem(__ACCESS_TOKEN_KEY__);
 }
 &nbsp;
-export function <span class="fstat-no" title="function not covered" >setRefreshTokenToLocalStorage(</span>token: string): void {
-<span class="cstat-no" title="statement not covered" >  localStorage.setItem(__REFRESH_TOKEN_KEY__, token);</span>
+export function setRefreshTokenToLocalStorage(token: string): void {
+  localStorage.setItem(__REFRESH_TOKEN_KEY__, token);
 }
 &nbsp;
-export function <span class="fstat-no" title="function not covered" >getRefreshTokenToLocalStorage(</span>): string | null {
-<span class="cstat-no" title="statement not covered" >  return localStorage.getItem(__REFRESH_TOKEN_KEY__);</span>
+export function getRefreshTokenToLocalStorage(): string | null {
+  return localStorage.getItem(__REFRESH_TOKEN_KEY__);
 }
 &nbsp;
-export function <span class="fstat-no" title="function not covered" >removeRefreshTokenFromLocalStorage(</span>): void {
-<span class="cstat-no" title="statement not covered" >  localStorage.removeItem(__REFRESH_TOKEN_KEY__);</span>
+export function removeRefreshTokenFromLocalStorage(): void {
+  localStorage.removeItem(__REFRESH_TOKEN_KEY__);
 }
 &nbsp;
 // Todos functions
@@ -205,7 +205,7 @@ export function <span class="fstat-no" title="function not covered" >setTodosOnL
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-11-05T10:44:08.933Z
+                at 2024-11-05T13:46:42.911Z
             </div>
         <script src="../prettify.js"></script>
         <script>
